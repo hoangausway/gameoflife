@@ -77,7 +77,9 @@ const ruleFont = {
 const rules = [ruleJs, ruleCss, ruleImg, ruleFont]
 
 // Where webpack looks to start building the bundle
-const entry = [paths.src + '/index.js']
+const entry = {
+  main: paths.src + '/index.js'
+}
 
 // Customize the webpack build process
 const plugins = [

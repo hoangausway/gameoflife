@@ -1,0 +1,1 @@
+(self.webpackChunkgame_of_life=self.webpackChunkgame_of_life||[]).push([[179],{9506:(e,f,l)=>{Promise.all([l.e(199),l.e(150),l.e(466),l.e(680)]).then(l.bind(l,5680))}},0,[[9506,666]]]);

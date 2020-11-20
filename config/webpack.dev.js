@@ -16,8 +16,6 @@ const mode = 'development'
 // const output = { publicPath: 'http://localhost:3004/' }
 // Where webpack outputs the assets and bundles
 const output = {
-  path: paths.public,
-  filename: '[name].bundle.js',
   publicPath: process.env.PUBLIC_PATH
 }
 
@@ -27,7 +25,7 @@ const devtool = 'inline-source-map'
 // Spin up a server for quick development
 const devServer = {
   port: process.env.PORT,
-  contentBase: paths.public,
+  contentBase: paths.build,
   open: true,
   compress: true,
   hot: true,

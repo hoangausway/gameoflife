@@ -1,4 +1,5 @@
 # 📦 WEBPACK WITH MODULE FEDERATION
+Modified from original Tania's [webpack 5 boilerplate](https://github.com/taniarascia/webpack-boilerplate)
 
 ## Installation
 

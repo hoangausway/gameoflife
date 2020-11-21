@@ -10,7 +10,7 @@ const MiniCssExtractPlugin = require('mini-css-extract-plugin')
 const CssMinimizerPlugin = require('css-minimizer-webpack-plugin')
 
 const mode = 'production'
-const devtool = false
+const devtool = 'source-map'
 const output = {
   path: paths.build,
   filename: '[name].bundle.js',

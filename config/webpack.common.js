@@ -6,6 +6,11 @@ const HtmlWebpackPlugin = require('html-webpack-plugin')
 const { ModuleFederationPlugin } = require('webpack').container
 const deps = require('../package.json').dependencies
 
+// Where webpack looks to start building the bundle
+const entry = {
+  main: paths.src + '/index.js'
+}
+
 const moduleFederationPlugin = new ModuleFederationPlugin({
   name: 'gameoflife',
   library: { type: 'assign', name: 'gameoflife' },
@@ -75,11 +80,6 @@ const ruleFont = {
 }
 
 const rules = [ruleJs, ruleCss, ruleImg, ruleFont]
-
-// Where webpack looks to start building the bundle
-const entry = {
-  main: paths.src + '/index.js'
-}
 
 // Customize the webpack build process
 const plugins = [

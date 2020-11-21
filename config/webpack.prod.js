@@ -12,10 +12,11 @@ const CssMinimizerPlugin = require('css-minimizer-webpack-plugin')
 const mode = 'production'
 const devtool = 'source-map'
 const output = {
-  path: paths.build,
-  filename: '[name].[contenthash].bundle.js',
+  // path: paths.build,
+  // filename: '[name].[contenthash].bundle.js',
   publicPath: process.env.PUBLIC_PATH
 }
+console.log('output.publicPath', output.publicPath)
 // Extracts CSS into separate files
 const miniCssExtractPlugin = new MiniCssExtractPlugin({
   filename: 'styles/[name].[contenthash].css',

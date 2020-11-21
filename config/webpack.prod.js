@@ -13,7 +13,7 @@ const mode = 'production'
 const devtool = false
 const output = {
   path: paths.build,
-  filename: '[name].[contenthash].bundle.js',
+  filename: '[name].bundle.js',
   publicPath: process.env.PUBLIC_PATH
 }
 // Extracts CSS into separate files

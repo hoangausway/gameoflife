@@ -24,11 +24,9 @@ module.exports = (_, argv) => ({
         use: ['style-loader', 'css-loader']
       },
       {
-        test: /\.(js|jsx)$/,
+        test: /\.jsx?$/,
+        loader: 'babel-loader',
         exclude: /node_modules/,
-        use: {
-          loader: 'babel-loader'
-        },
         options: {
           presets: ['@babel/preset-react']
         }

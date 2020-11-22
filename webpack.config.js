@@ -38,8 +38,8 @@ const htmlWebPackPlugin = new HtmlWebPackPlugin({
   template: './src/index.html'
 })
 
-module.exports = (_, { mode }) => ({
-  output: output(mode),
+module.exports = (_, argv) => ({
+  output: output(argv.mode),
   resolve,
   devServer,
   module: { rules },

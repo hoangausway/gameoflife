@@ -12,6 +12,13 @@
     "name": "Hoang Nguyen",
     "email": "hoang.ausway@gmail.com"
   },
+  "keywords": [
+    "webpack",
+    "webpack 5",
+    "module federation",
+    "micro frontend",
+    "game of life"
+  ],
   "devDependencies": {
     "@babel/core": "^7.12.1",
     "@babel/preset-env": "^7.12.1",

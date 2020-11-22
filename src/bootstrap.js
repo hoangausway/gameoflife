@@ -1,12 +1,12 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
-
+import '../src/styles/index.css'
 import Gol from './components/GOL'
 
 function App () {
   return (
     <>
-      <h1>The Game Of Life</h1>
+      <h3>The Game Of Life</h3>
       <Gol />
     </>
   )

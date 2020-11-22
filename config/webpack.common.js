@@ -71,7 +71,7 @@ const ruleCss = {
 }
 
 // Images: Copy image files to build folder
-const ruleImg = { test: /\.(?:ico|gif|png|jpg|jpeg)$/i, type: 'asset/resource' }
+const ruleImg = { test: /\.(?:ico|svg|png|jpg|jpeg|gif)$/i, type: 'asset/resource' }
 
 // Fonts and SVGs: Inline files
 const ruleFont = {

@@ -1,10 +1,21 @@
-@font-face {
-  font-family: "Inter";
-  src: url("../fonts/Inter.ttf");
-  font-weight: 200;
-  font-style: normal;
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
 }
 
 body {
-  font-family: 'Inter';
+  font-family: Helvetica, Arial, sans-serif;
+  font-size: 16px;
+  font-weight: 200;
+  overflow-x: hidden;
+  color: black;
+}
+
+a,
+a:hover,
+a:visited,
+a:link,
+a:active {
+  text-decoration: none;
 }

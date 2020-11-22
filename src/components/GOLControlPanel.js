@@ -1,9 +1,14 @@
 import React from 'react'
-import { Subject, merge } from 'rxjs'
-import { map, scan } from 'rxjs/operators'
+import { of, Subject, merge } from 'rxjs'
+import {
+  map,
+  scan,
+  debounceTime,
+  distinctUntilChanged,
+  switchMap
+} from 'rxjs/operators'
 
-import { of } from 'rxjs'
-import { debounceTime, distinctUntilChanged, switchMap } from 'rxjs/operators'
+import { Select } from '../common/select'
 
 const GOLControlPanel = ({ resetEmit, pauseEmit, patterns, options }) => {
   const [
@@ -12,6 +17,7 @@ const GOLControlPanel = ({ resetEmit, pauseEmit, patterns, options }) => {
     initialOriginX,
     initialOriginy
   ] = options
+
   const initialState = {
     isPaused: false,
     patternName: initialPatternName,
@@ -56,12 +62,38 @@ const GOLControlPanel = ({ resetEmit, pauseEmit, patterns, options }) => {
     pauseEmit(e)
   }
 
+  const patOptions = Object.keys(patterns)
+    .sort()
+    .map((pat, idx) => ({ value: idx, label: pat }))
+  const handler = selected => {
+    patternNameEmit({ target: { value: selected.label } })
+    const ev = {
+      world_event_reset: {
+        pattern: {
+          matrix: patterns[selected.label],
+          originX: state.originX,
+          originY: state.originY
+        },
+        tick: state.tick
+      }
+    }
+    resetEmit(ev)
+  }
+  const patValue = patOptions.find(
+    patOption => patOption.label === initialPatternName
+  )
+
   return (
     <div>
       <button onClick={pauseHandler}>{state.isPaused ? '|>' : '||'}</button>
       <button onClick={resetHandler}>RESET</button>
       <section>
-        <label>Pattern:</label>
+        <Select
+          defaultValue={patValue}
+          options={patOptions}
+          onChange={handler}
+        />
+        {/* <label>Pattern:</label>
         <input
           placeholder='pattern name'
           value={state.patternName}
@@ -77,7 +109,7 @@ const GOLControlPanel = ({ resetEmit, pauseEmit, patterns, options }) => {
           }}
         >
           {state.selectionNames}
-        </div>
+        </div> */}
       </section>
       <section>
         <label>OriginX:</label>

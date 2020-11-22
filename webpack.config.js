@@ -10,6 +10,7 @@ const output = mode => ({
 
 const resolve = { extensions: ['.jsx', '.js', '.json'] }
 const devServer = { port: 8080 }
+const devtool = 'source-map'
 
 const ruleCss = { test: /\.css$/i, use: ['style-loader', 'css-loader'] }
 const ruleBabel = {
@@ -34,13 +35,14 @@ const moduleFederationPlugin = new ModuleFederationPlugin({
 
 const htmlWebPackPlugin = new HtmlWebPackPlugin({
   title: 'Game Of Life',
-  template: './src/index.html'
+  template: './src/template.html'
 })
 
 module.exports = (_, argv) => ({
   output: output(argv.mode),
   resolve,
   devServer,
+  devtool,
   module: { rules },
   plugins: [moduleFederationPlugin, htmlWebPackPlugin]
 })

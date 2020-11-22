@@ -6,7 +6,7 @@ import Gol from './components/GOL'
 function App () {
   return (
     <>
-      <h1>Hello from Game Of Life App</h1>
+      <h1>The Game Of Life</h1>
       <Gol />
     </>
   )

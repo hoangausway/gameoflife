@@ -44,7 +44,7 @@ module.exports = (_, argv) => ({
       shared: require('./package.json').dependencies
     }),
     new HtmlWebPackPlugin({
-      template: './src/template.html'
+      template: './src/index.html'
     })
   ]
 })

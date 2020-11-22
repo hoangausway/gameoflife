@@ -5,8 +5,8 @@ module.exports = (_, argv) => ({
   output: {
     publicPath:
       argv.mode === 'development'
-        ? 'http://localhost:8081/'
-        : 'https://prod-test-consumer.netlify.app/'
+        ? 'http://localhost:8080/'
+        : 'https://gameoflife-motionary.netlify.app/'
   },
 
   resolve: {
@@ -14,7 +14,7 @@ module.exports = (_, argv) => ({
   },
 
   devServer: {
-    port: 8081
+    port: 8080
   },
 
   module: {
@@ -35,16 +35,16 @@ module.exports = (_, argv) => ({
 
   plugins: [
     new ModuleFederationPlugin({
-      name: 'consumer',
+      name: 'gameoflife',
       filename: 'remoteEntry.js',
-      remotes: {
-        header: 'header@https://prod-test-header.netlify.app/remoteEntry.js'
+      remotes: {},
+      exposes: {
+        './Gol': './src/components/GOL'
       },
-      exposes: {},
       shared: require('./package.json').dependencies
     }),
     new HtmlWebPackPlugin({
-      template: './src/index.html'
+      template: './src/template.html'
     })
   ]
 })

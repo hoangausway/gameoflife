@@ -13,12 +13,11 @@ const devServer = { port: 8080 }
 
 const ruleCss = { test: /\.css$/i, use: ['style-loader', 'css-loader'] }
 const ruleBabel = {
-  test: /\.jsx?$/,
+  test: /\.(js|jsx)$/,
   loader: 'babel-loader',
   exclude: /node_modules/,
-  use: {
-    loader: 'babel-loader',
-    options: { presets: ['@babel/preset-env', '@babel/preset-react'] }
+  options: {
+    presets: ['@babel/preset-react']
   }
 }
 const rules = [ruleCss, ruleBabel]

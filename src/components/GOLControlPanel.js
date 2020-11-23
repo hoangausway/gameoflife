@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { of, Subject, merge } from 'rxjs'
 import {
   map,
@@ -10,8 +10,7 @@ import {
 
 import styled from 'styled-components'
 
-import { Select } from '../common/select'
-import { Button } from '../common/button'
+import { Select, Button } from '../common'
 
 const GOLControlPanel = ({
   resetEmit,
@@ -64,6 +63,7 @@ const GOLControlPanel = ({
       }
     }
     resetEmit(ev)
+    setShown(!shown)
   }
 
   const pauseHandler = e => {
@@ -92,54 +92,50 @@ const GOLControlPanel = ({
     patOption => patOption.label === initialPatternName
   )
 
+  const [shown, setShown] = useState(true)
   return (
-    <StyledPanel>
-      <StyledLeft>
-        <Button onClick={pauseHandler}>{state.isPaused ? 'Play' : 'Pause'}</Button>
-        <label>{'Lives: ' + count}</label>
-      </StyledLeft>
-      <StyledRight>
-        <div>
-          <Select
-            defaultValue={patValue}
-            options={patOptions}
-            onChange={handler}
+    <>
+      <StyledPanel shown={shown}>
+        <Select
+          defaultValue={patValue}
+          options={patOptions}
+          onChange={handler}
+        />
+        <Button onClick={() => setShown(!shown)}>Params</Button>
+        <Button
+          bgColor={state.isPaused ? 'green' : '#9f0000'}
+          onClick={pauseHandler}
+        >
+          {state.isPaused ? 'Play' : 'Pause'}
+        </Button>
+      </StyledPanel>
+      <StyledParams shown={!shown}>
+        <StyledInput>
+          <label>X</label>
+          <input
+            type='number'
+            placeholder='X origin'
+            value={state.originX}
+            onChange={originXEmit}
           />
-        </div>
-        <StyledParams>
-          <StyledInput>
-            <label>X</label>
-            <input
-              type='number'
-              placeholder='X origin'
-              value={state.originX}
-              onChange={originXEmit}
-            />
-          </StyledInput>
-          <StyledInput>
-            <label>Tick</label>
-            <input
-              type='number'
-              placeholder='X origin'
-              value={state.tick}
-              onChange={tickEmit}
-            />
-          </StyledInput>
-          <StyledInput>
-            <label>Y</label>
-            <input
-              type='number'
-              placeholder='Y origin'
-              value={state.originY}
-              onChange={originYEmit}
-            />
-          </StyledInput>
-          <div>
-            <Button onClick={resetHandler}>Set</Button>
-          </div>
-        </StyledParams>
-      </StyledRight>
-    </StyledPanel>
+          <label>Y</label>
+          <input
+            type='number'
+            placeholder='Y origin'
+            value={state.originY}
+            onChange={originYEmit}
+          />
+          <label>Tick</label>
+          <input
+            type='number'
+            placeholder='tick'
+            value={state.tick}
+            onChange={tickEmit}
+          />
+        </StyledInput>
+        <Button onClick={resetHandler}>OK</Button>
+      </StyledParams>
+    </>
   )
 }
 
@@ -227,72 +223,50 @@ const useEvent = (deps = []) => {
 
 // Helpers styled
 const StyledPanel = styled.div`
-  display: grid;
-  grid-template-columns: 100px 1fr;
+  display: ${ps => (ps.shown ? 'grid' : 'none')};
+  grid-template-columns: 1fr 80px 80px;
+  grid-gap: 6px;
+  align-items: center;
+
+  width: 100%;
+  height: 100%;
+  padding: 0.5rem;
+  margin-top: 0.5rem;
+
+`
+const StyledParams = styled.div`
+  display: ${ps => (ps.shown ? 'grid' : 'none')};
+  grid-template-columns: 1fr 80px;
   grid-gap: 6px;
 
   width: 100%;
+  height: 100%;
   padding: 0.5rem;
   margin-top: 0.5rem;
 
-  & > :nth-child(1) {
-    width: 100px;
-  }
   & > :nth-child(2) {
-    width: 300px;
+    margin-left: 0.5rem;
   }
-
-`
-
-const StyledLeft = styled.div`
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  align-items: left;
-
-  & > :nth-child(1) {
-    height: 100%;
-  }
-  & > :nth-child(2) {
-    height: 28px;
-    padding-top: 0.5rem;
-  }
-
-  border: 1px solid blue;
-  padding: 0.5rem;
-`
-const StyledRight = styled.div`
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  align-items: left;
-`
-
-const StyledParams = styled.div`
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  grid-template-rows: 1fr 1fr;
-  grid-gap: 12px;
-
-  & > :nth-child(4) {
-    text-align: right;
-  }
-
-  border: 1px solid blue;
-  padding: 0.5rem;
-  margin-top: 0.5rem;
 `
 
 const StyledInput = styled.div`
   display: flex;
   flex-direction: row;
-  justify-content: space-between;
+  justify-content: flex-end;
   align-items: center;
 
-  & > :nth-child(2) {
-    width: 60px;
-    height: 28px;
-    padding: 6px;
-    margin-left: 2px;
+  width: 100%;
+  height: 100%;
+  
+  & > * {
+    max-width: 70px;
+    height: 38px;
+    padding: 0.4rem;
+  }
+  & > :nth-child(3) {
+    margin-left: 0.5rem;
+  }
+  & > :nth-child(5) {
+    margin-left: 0.5rem;
   }
 `

@@ -30,7 +30,10 @@ const ruleBabel = {
 // Styles: Inject CSS into the head with source maps
 const ruleCss = { test: /\.css$/i, use: ['style-loader', 'css-loader'] }
 // Images: Copy image files to build folder
-const ruleImg = { test: /\.(?:ico|svg|png|jpg|jpeg|gif)$/i, type: 'asset/resource' }
+const ruleImg = {
+  test: /\.(?:ico|svg|png|jpg|jpeg|gif)$/i,
+  type: 'asset/resource'
+}
 // Fonts and SVGs: Inline files
 const ruleFont = {
   test: /\.(woff(2)?|eot|ttf|otf|svg|)$/,

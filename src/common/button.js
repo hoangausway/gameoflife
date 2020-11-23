@@ -1,7 +1,7 @@
 import styled from 'styled-components'
 
 export const Button = styled.div`
-  height: ${ps => ps.height || '28px'};
+  height: ${ps => ps.height || '38px'};
 
   padding: 0rem 1rem;
   border-radius: 3px;
@@ -10,14 +10,14 @@ export const Button = styled.div`
   font-weight: 500;
 
   color: white;
-  background-color: navy;
+  background-color: ${ps => ps.bgColor || 'navy'};
 
   cursor: pointer;
   text-align: center;
 
   display: flex;
   align-items: center;
-  justify-content: center
+  justify-content: center;
 `
 
 export const CircleButton = styled(Button)`

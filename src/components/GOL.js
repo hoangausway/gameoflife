@@ -7,6 +7,8 @@ import useEventOfLife from './useEventOfLife'
 import GridOfLife from './GridOfLife'
 import GOLControlPanel from './GOLControlPanel'
 
+import { Rect } from '../common'
+
 // const initialWorld = drawPattern(HEIGHT, WIDTH, pattern)
 const makePattern = (patternName, originX, originY) => ({
   matrix: patterns[patternName],
@@ -56,41 +58,29 @@ const Gol = ({
 
   return (
     <StyledGOL>
-      <div>
-        <GOLControlPanel
-          resetEmit={resetEmit}
-          pauseEmit={pauseEmit}
-          patterns={patterns}
-          options={[
-            initialTick,
-            initialPatternName,
-            initialOriginX,
-            initialOriginY
-          ]}
-          count={count}
-        />
-      </div>
-      <div style={style}>
-        <GridOfLife world={world} toggle={toggleEmit} />
-      </div>
+      <GOLControlPanel
+        resetEmit={resetEmit}
+        pauseEmit={pauseEmit}
+        patterns={patterns}
+        options={[
+          initialTick,
+          initialPatternName,
+          initialOriginX,
+          initialOriginY
+        ]}
+        count={count}
+      />
+      <GridOfLife world={world} toggle={toggleEmit} />
     </StyledGOL>
   )
 }
 export default Gol
 
-const style = {
-  width: '400px',
-  height: '400px',
-  border: '1px solid navy',
-  margin: '0.5em',
-  padding: '3px'
-}
-
 const StyledGOL = styled.div`
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
+  display: grid;
+  grid-template-rows: 60px 1fr;
   align-items: center;
 
-  /* background: lightgray; */
+  width: 100%;
+  height: 100%;
 `

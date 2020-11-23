@@ -8,7 +8,7 @@ const primaryText = '#0d47a1' // theme.palette.contrastText
 const customStyles = {
   control: (provided, state) => ({
     ...provided,
-    fontSize: '0.875rem',
+    fontSize: '0.75rem',
     fontFamily: 'Helvetica, Arial, sans-serif',
     backgroundColor: 'none'
   }),
@@ -18,7 +18,7 @@ const customStyles = {
   }),
   option: (provided, state) => ({
     ...provided,
-    fontSize: '0.875rem',
+    fontSize: '0.75rem',
     fontFamily: 'Helvetica, Arial, sans-serif',
     color: state.isSelected ? primaryText : primaryMain,
     backgroundColor: state.isSelected ? '#fafafa' : provided.backgroundColor
@@ -45,7 +45,7 @@ export const Select = ({ defaultValue, value, options, onChange }) => (
 const extraSelectCustomStyles = {
   control: (provided, state) => ({
     ...provided,
-    fontSize: '0.875rem',
+    fontSize: '0.75rem',
     fontFamily: 'Helvetica, Arial, sans-serif',
     backgroundColor: 'none'
   }),
@@ -55,7 +55,7 @@ const extraSelectCustomStyles = {
   }),
   option: (provided, state) => ({
     ...provided,
-    fontSize: '0.875rem',
+    fontSize: '0.75rem',
     fontFamily: 'Helvetica, Arial, sans-serif',
     color: state.isSelected ? primaryText : primaryMain,
     backgroundColor: state.isSelected ? '#fafafa' : provided.backgroundColor

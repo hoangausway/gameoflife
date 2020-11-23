@@ -1,5 +1,6 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
+import styled from 'styled-components'
 
 import { Helmet } from 'react-helmet'
 import { useMediaQuery } from 'react-responsive'
@@ -26,12 +27,33 @@ const SmallScreen = ({ children }) => {
     : null
 }
 
+const StyledSmall = styled.div`
+  width: 100vw;
+  height: calc(100vw + 160px);
+`
+
+const StyledBig = styled.div`
+  width: 736px;
+  height: calc(736px + 160px);
+
+  margin: auto;
+`
+
 function App () {
   return (
     <>
       <Metadata title='Game Of Life' description='The game of life' />
-      <h3>The Game Of Life</h3>
-      <Gol />
+      <h3 style={{ textAlign: 'center', paddingTop: '0.75rem' }}>The Game Of Life</h3>
+      <SmallScreen>
+        <StyledSmall>
+          <Gol />
+        </StyledSmall>
+      </SmallScreen>
+      <BigScreen>
+        <StyledBig>
+          <Gol />
+        </StyledBig>
+      </BigScreen>
     </>
   )
 }

@@ -38,6 +38,8 @@ const StyledGrid = styled.div`
   grid-template-columns: ${props => `repeat(${props.width}, 1fr)`};
   grid-template-rows: ${props => `repeat(${props.height}, 1fr)`};
   border: 1px solid #fafafa;
+
+  cursor: pointer;
 `
 
 const StyledCell = styled.div`

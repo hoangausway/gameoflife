@@ -8,9 +8,18 @@ import {
   switchMap
 } from 'rxjs/operators'
 
-import { Select } from '../common/select'
+import styled from 'styled-components'
 
-const GOLControlPanel = ({ resetEmit, pauseEmit, patterns, options }) => {
+import { Select } from '../common/select'
+import { Button } from '../common/button'
+
+const GOLControlPanel = ({
+  resetEmit,
+  pauseEmit,
+  patterns,
+  options,
+  count
+}) => {
   const [
     initialTick,
     initialPatternName,
@@ -84,59 +93,53 @@ const GOLControlPanel = ({ resetEmit, pauseEmit, patterns, options }) => {
   )
 
   return (
-    <div>
-      <button onClick={pauseHandler}>{state.isPaused ? '|>' : '||'}</button>
-      <button onClick={resetHandler}>RESET</button>
-      <section>
-        <Select
-          defaultValue={patValue}
-          options={patOptions}
-          onChange={handler}
-        />
-        {/* <label>Pattern:</label>
-        <input
-          placeholder='pattern name'
-          value={state.patternName}
-          onChange={patternNameEmit}
-          onKeyUp={patterNameKeyUpEmit}
-        />
-        <div
-          style={{
-            width: '600px',
-            height: '28px',
-            overflow: 'scroll',
-            backgroundColor: 'palegreen'
-          }}
-        >
-          {state.selectionNames}
-        </div> */}
-      </section>
-      <section>
-        <label>OriginX:</label>
-        <input
-          type='number'
-          placeholder='X origin'
-          value={state.originX}
-          onChange={originXEmit}
-        />
-        <label>OriginY:</label>
-        <input
-          type='number'
-          placeholder='Y origin'
-          value={state.originY}
-          onChange={originYEmit}
-        />
-      </section>
-      <section>
-        <label>Tick:</label>
-        <input
-          type='number'
-          placeholder='X origin'
-          value={state.tick}
-          onChange={tickEmit}
-        />
-      </section>
-    </div>
+    <StyledPanel>
+      <StyledLeft>
+        <Button onClick={pauseHandler}>{state.isPaused ? 'Play' : 'Pause'}</Button>
+        <label>{'Lives: ' + count}</label>
+      </StyledLeft>
+      <StyledRight>
+        <div>
+          <Select
+            defaultValue={patValue}
+            options={patOptions}
+            onChange={handler}
+          />
+        </div>
+        <StyledParams>
+          <StyledInput>
+            <label>X</label>
+            <input
+              type='number'
+              placeholder='X origin'
+              value={state.originX}
+              onChange={originXEmit}
+            />
+          </StyledInput>
+          <StyledInput>
+            <label>Tick</label>
+            <input
+              type='number'
+              placeholder='X origin'
+              value={state.tick}
+              onChange={tickEmit}
+            />
+          </StyledInput>
+          <StyledInput>
+            <label>Y</label>
+            <input
+              type='number'
+              placeholder='Y origin'
+              value={state.originY}
+              onChange={originYEmit}
+            />
+          </StyledInput>
+          <div>
+            <Button onClick={resetHandler}>Set</Button>
+          </div>
+        </StyledParams>
+      </StyledRight>
+    </StyledPanel>
   )
 }
 
@@ -221,3 +224,75 @@ const useEvent = (deps = []) => {
   const eventEmit = React.useCallback(e => eventStream$.next(e), deps)
   return [eventEmit, eventStream$]
 }
+
+// Helpers styled
+const StyledPanel = styled.div`
+  display: grid;
+  grid-template-columns: 100px 1fr;
+  grid-gap: 6px;
+
+  width: 100%;
+  padding: 0.5rem;
+  margin-top: 0.5rem;
+
+  & > :nth-child(1) {
+    width: 100px;
+  }
+  & > :nth-child(2) {
+    width: 300px;
+  }
+
+`
+
+const StyledLeft = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: left;
+
+  & > :nth-child(1) {
+    height: 100%;
+  }
+  & > :nth-child(2) {
+    height: 28px;
+    padding-top: 0.5rem;
+  }
+
+  border: 1px solid blue;
+  padding: 0.5rem;
+`
+const StyledRight = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: left;
+`
+
+const StyledParams = styled.div`
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: 1fr 1fr;
+  grid-gap: 12px;
+
+  & > :nth-child(4) {
+    text-align: right;
+  }
+
+  border: 1px solid blue;
+  padding: 0.5rem;
+  margin-top: 0.5rem;
+`
+
+const StyledInput = styled.div`
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+
+  & > :nth-child(2) {
+    width: 60px;
+    height: 28px;
+    padding: 6px;
+    margin-left: 2px;
+  }
+`

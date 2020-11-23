@@ -1,4 +1,5 @@
 import React, { useState } from 'react'
+import styled from 'styled-components'
 
 import { drawPattern, lifeCount } from './rulesOfLife'
 import { patterns } from './patterns' /* pre-defined GOL patterns */
@@ -54,31 +55,42 @@ const Gol = ({
   )
 
   return (
-    <div>
-      <GOLControlPanel
-        resetEmit={resetEmit}
-        pauseEmit={pauseEmit}
-        patterns={patterns}
-        options={[
-          initialTick,
-          initialPatternName,
-          initialOriginX,
-          initialOriginY
-        ]}
-      />
-      <label>{'Lives: ' + count}</label>
+    <StyledGOL>
+      <div>
+        <GOLControlPanel
+          resetEmit={resetEmit}
+          pauseEmit={pauseEmit}
+          patterns={patterns}
+          options={[
+            initialTick,
+            initialPatternName,
+            initialOriginX,
+            initialOriginY
+          ]}
+          count={count}
+        />
+      </div>
       <div style={style}>
         <GridOfLife world={world} toggle={toggleEmit} />
       </div>
-    </div>
+    </StyledGOL>
   )
 }
 export default Gol
 
 const style = {
-  width: '600px',
-  height: '600px',
+  width: '400px',
+  height: '400px',
   border: '1px solid navy',
   margin: '0.5em',
   padding: '3px'
 }
+
+const StyledGOL = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  /* background: lightgray; */
+`

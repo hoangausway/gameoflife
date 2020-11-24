@@ -1,3 +1,4 @@
+const { CleanWebpackPlugin } = require('clean-webpack-plugin')
 const HtmlWebPackPlugin = require('html-webpack-plugin')
 const ModuleFederationPlugin = require('webpack/lib/container/ModuleFederationPlugin')
 
@@ -56,6 +57,9 @@ const htmlWebPackPlugin = new HtmlWebPackPlugin({
   template: './src/template.html'
 })
 
+// Removes/cleans build folders and unused assets when rebuilding
+const cleanWebpackPlugin = new CleanWebpackPlugin()
+
 module.exports = (_, argv) => ({
   // entry,
   output: output(argv.mode),
@@ -63,5 +67,5 @@ module.exports = (_, argv) => ({
   devServer,
   devtool,
   module: { rules },
-  plugins: [moduleFederationPlugin, htmlWebPackPlugin]
+  plugins: [moduleFederationPlugin, cleanWebpackPlugin, htmlWebPackPlugin]
 })

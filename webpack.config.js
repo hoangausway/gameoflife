@@ -69,5 +69,5 @@ module.exports = (_, argv) => ({
   devServer,
   devtool,
   module: { rules },
-  plugins: [moduleFederationPlugin, cleanWebpackPlugin, htmlWebPackPlugin]
+  plugins: [cleanWebpackPlugin, htmlWebPackPlugin, moduleFederationPlugin]
 })

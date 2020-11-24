@@ -15,7 +15,9 @@ const moduleFederationPlugin = new ModuleFederationPlugin({
   name: 'gameoflife',
   library: { type: 'assign', name: 'gameoflife' },
   filename: 'remoteEntry.js',
-  exposes: { './Gol': './src/components/GOL' }, // expose each component you want
+  exposes: { 
+    './GameOfLife': './src/components/gameoflife'
+  }, // expose each component you want
   remotes: {}, // consume remote components
   shared: {
     ...deps,

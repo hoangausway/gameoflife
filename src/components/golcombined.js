@@ -17,6 +17,14 @@ const makeResetEvent = (tick, pattern) => ({
   world_event_reset: { pattern, tick }
 })
 
+const StyledGOL = styled.div`
+  display: grid;
+  grid-template-rows: 60px 1fr;
+  align-items: center;
+
+  width: 100%;
+  height: 100%;
+`
 const Gol = ({
   height = 40,
   width = 40,
@@ -73,12 +81,3 @@ const Gol = ({
   )
 }
 export default Gol
-
-const StyledGOL = styled.div`
-  display: grid;
-  grid-template-rows: 60px 1fr;
-  align-items: center;
-
-  width: 100%;
-  height: 100%;
-`

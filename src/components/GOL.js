@@ -7,7 +7,7 @@ import useEventOfLife from './useEventOfLife'
 import GridOfLife from './GridOfLife'
 import GOLControlPanel from './GOLControlPanel'
 
-import { Rect } from '../common'
+import { bodyMixin } from '../common'
 
 // const initialWorld = drawPattern(HEIGHT, WIDTH, pattern)
 const makePattern = (patternName, originX, originY) => ({
@@ -77,6 +77,8 @@ const Gol = ({
 export default Gol
 
 const StyledGOL = styled.div`
+  ${() => bodyMixin}
+
   display: grid;
   grid-template-rows: 60px 1fr;
   align-items: center;

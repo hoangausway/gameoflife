@@ -46,7 +46,7 @@ const moduleFederationPlugin = new ModuleFederationPlugin({
   filename: 'remoteEntry.js',
   remotes: {},
   exposes: {
-    './Gol': './src/components/GOL'
+    './GameOfLife': './src/components/gameoflife'
   },
   shared: require('./package.json').dependencies
 })

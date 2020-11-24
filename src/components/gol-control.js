@@ -268,7 +268,7 @@ const StyledInput = styled.div`
   & > :nth-child(3) {
     margin-left: 0.5rem;
   }
-  & > :nth-child(2) {
+  & > :nth-child(4) {
     max-width: 40px;
   }
   & > :nth-child(5) {

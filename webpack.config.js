@@ -1,5 +1,3 @@
-// const path = require('path')
-// const { CleanWebpackPlugin } = require('clean-webpack-plugin')
 const HtmlWebPackPlugin = require('html-webpack-plugin')
 const ModuleFederationPlugin = require('webpack/lib/container/ModuleFederationPlugin')
 
@@ -10,7 +8,6 @@ const ModuleFederationPlugin = require('webpack/lib/container/ModuleFederationPl
 
 // Where webpack outputs the assets and bundles
 const output = mode => ({
-  // path: path.resolve(__dirname, '../dist'),
   publicPath:
     mode === 'development'
       ? 'http://localhost:8080/'
@@ -58,9 +55,6 @@ const htmlWebPackPlugin = new HtmlWebPackPlugin({
   title: 'Game Of Life',
   template: './src/template.html'
 })
-
-// Removes/cleans build folders and unused assets when rebuilding
-// const cleanWebpackPlugin = new CleanWebpackPlugin()
 
 module.exports = (_, argv) => ({
   // entry,

@@ -1,13 +1,11 @@
 import React, { useState } from 'react'
 import styled from 'styled-components'
 
-import { drawPattern, lifeCount } from './rulesOfLife'
+import { drawPattern, lifeCount } from './rules-of-life'
 import { patterns } from './patterns' /* pre-defined GOL patterns */
-import useEventOfLife from './useEventOfLife'
-import GridOfLife from './GridOfLife'
-import GOLControlPanel from './GOLControlPanel'
-
-import { bodyMixin } from '../common'
+import useEventOfLife from './use-event-of-life'
+import GridOfLife from './grid-of-life'
+import GOLControlPanel from './gol-control'
 
 // const initialWorld = drawPattern(HEIGHT, WIDTH, pattern)
 const makePattern = (patternName, originX, originY) => ({
@@ -77,8 +75,6 @@ const Gol = ({
 export default Gol
 
 const StyledGOL = styled.div`
-  ${() => bodyMixin}
-
   display: grid;
   grid-template-rows: 60px 1fr;
   align-items: center;

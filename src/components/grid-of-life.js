@@ -2,7 +2,7 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import styled from 'styled-components'
 
-import { lifeCount } from './rulesOfLife'
+import { lifeCount } from './rules-of-life'
 
 const GridOfLife = ({ world, toggle }) => {
   const { arr, height, width } = world

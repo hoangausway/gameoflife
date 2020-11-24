@@ -96,11 +96,6 @@ const GOLControlPanel = ({
   return (
     <>
       <StyledPanel shown={shown}>
-        <Select
-          defaultValue={patValue}
-          options={patOptions}
-          onChange={handler}
-        />
         <Button onClick={() => setShown(!shown)}>Params</Button>
         <Button
           bgColor={state.isPaused ? 'green' : '#9f0000'}
@@ -108,8 +103,14 @@ const GOLControlPanel = ({
         >
           {state.isPaused ? 'Play' : 'Pause'}
         </Button>
+        <Select
+          defaultValue={patValue}
+          options={patOptions}
+          onChange={handler}
+        />
       </StyledPanel>
       <StyledParams shown={!shown}>
+        <Button onClick={resetHandler}>OK</Button>
         <StyledInput>
           <label>X</label>
           <input
@@ -133,7 +134,6 @@ const GOLControlPanel = ({
             onChange={tickEmit}
           />
         </StyledInput>
-        <Button onClick={resetHandler}>OK</Button>
       </StyledParams>
     </>
   )
@@ -224,24 +224,23 @@ const useEvent = (deps = []) => {
 // Helpers styled
 const StyledPanel = styled.div`
   display: ${ps => (ps.shown ? 'grid' : 'none')};
-  grid-template-columns: 1fr 80px 80px;
+  grid-template-columns: 80px 80px 1fr;
   grid-gap: 6px;
   align-items: center;
 
   width: 100%;
   height: 100%;
-  padding: 0.5rem;
+  padding: 0.5rem 0;
   margin-top: 0.5rem;
-
 `
 const StyledParams = styled.div`
   display: ${ps => (ps.shown ? 'grid' : 'none')};
-  grid-template-columns: 1fr 80px;
+  grid-template-columns: 80px 1fr;
   grid-gap: 6px;
 
   width: 100%;
   height: 100%;
-  padding: 0.5rem;
+  padding: 0.5rem 0;
   margin-top: 0.5rem;
 
   & > :nth-child(2) {
@@ -252,16 +251,16 @@ const StyledParams = styled.div`
 const StyledInput = styled.div`
   display: flex;
   flex-direction: row;
-  justify-content: flex-end;
+  justify-content: flex-start;
   align-items: center;
 
   width: 100%;
   height: 100%;
-  
+
   & > * {
-    max-width: 70px;
+    max-width: 65px;
     height: 38px;
-    padding: 0.4rem;
+    padding: 0.25rem;
   }
   & > :nth-child(3) {
     margin-left: 0.5rem;

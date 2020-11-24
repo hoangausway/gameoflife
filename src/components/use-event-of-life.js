@@ -3,7 +3,7 @@ import { Subject } from 'rxjs'
 // eslint-disable-next-line
 import { startWith, map, scan, tap } from 'rxjs/operators'
 
-import { WorldEventTypes, makeWorldStream, lifeCount } from './rulesOfLife'
+import { WorldEventTypes, makeWorldStream, lifeCount } from './rules-of-life'
 
 /*
 INPUT

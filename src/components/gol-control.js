@@ -237,6 +237,7 @@ const StyledParams = styled.div`
   display: ${ps => (ps.shown ? 'grid' : 'none')};
   grid-template-columns: 80px 1fr;
   grid-gap: 6px;
+  align-items: center;
 
   width: 100%;
   height: 100%;
@@ -258,20 +259,23 @@ const StyledInput = styled.div`
   height: 100%;
 
   & > * {
-    max-width: 65px;
     height: 28px;
-    padding: 0.25rem;
+    padding: 0.2rem;
+    font-size: 0.75rem;
   }
   & > :nth-child(2) {
     max-width: 40px;
   }
   & > :nth-child(3) {
-    margin-left: 0.5rem;
+    margin-left: 0.3rem;
   }
   & > :nth-child(4) {
     max-width: 40px;
   }
   & > :nth-child(5) {
-    margin-left: 0.5rem;
+    margin-left: 0.3rem;
+  }
+  & > :nth-child(6) {
+    max-width: 62px;
   }
 `

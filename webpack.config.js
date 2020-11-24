@@ -1,5 +1,5 @@
 const path = require('path')
-const { CleanWebpackPlugin } = require('clean-webpack-plugin')
+// const { CleanWebpackPlugin } = require('clean-webpack-plugin')
 const HtmlWebPackPlugin = require('html-webpack-plugin')
 const ModuleFederationPlugin = require('webpack/lib/container/ModuleFederationPlugin')
 
@@ -60,7 +60,7 @@ const htmlWebPackPlugin = new HtmlWebPackPlugin({
 })
 
 // Removes/cleans build folders and unused assets when rebuilding
-const cleanWebpackPlugin = new CleanWebpackPlugin()
+// const cleanWebpackPlugin = new CleanWebpackPlugin()
 
 module.exports = (_, argv) => ({
   // entry,
@@ -69,5 +69,5 @@ module.exports = (_, argv) => ({
   devServer,
   devtool,
   module: { rules },
-  plugins: [cleanWebpackPlugin, htmlWebPackPlugin, moduleFederationPlugin]
+  plugins: [htmlWebPackPlugin, moduleFederationPlugin]
 })

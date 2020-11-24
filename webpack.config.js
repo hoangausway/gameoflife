@@ -2,9 +2,9 @@ const HtmlWebPackPlugin = require('html-webpack-plugin')
 const ModuleFederationPlugin = require('webpack/lib/container/ModuleFederationPlugin')
 
 // Where webpack looks to start building the bundle
-const entry = {
-  main: './src/index.js'
-}
+// const entry = {
+//   main: './src/index.js'
+// }
 
 // Where webpack outputs the assets and bundles
 const output = mode => ({
@@ -57,7 +57,7 @@ const htmlWebPackPlugin = new HtmlWebPackPlugin({
 })
 
 module.exports = (_, argv) => ({
-  entry,
+  // entry,
   output: output(argv.mode),
   resolve,
   devServer,

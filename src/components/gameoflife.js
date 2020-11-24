@@ -1,8 +1,9 @@
 import React from 'react'
 import styled, { css } from 'styled-components'
 import { useMediaQuery } from 'react-responsive'
-// import Gol from './gol'
+
 import '../styles/index.css'
+import Gol from './gol'
 
 const WIDTH = 736 // iPhonePlusLandscapeWidth
 const barHeight = 160

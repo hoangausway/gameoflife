@@ -1,7 +1,7 @@
 import React from 'react'
 import styled, { css } from 'styled-components'
 import { useMediaQuery } from 'react-responsive'
-import Gol from './gol'
+// import Gol from './gol'
 import '../styles/index.css'
 
 const WIDTH = 736 // iPhonePlusLandscapeWidth

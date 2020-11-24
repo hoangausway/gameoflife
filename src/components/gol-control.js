@@ -112,21 +112,25 @@ const GOLControlPanel = ({
       <StyledParams shown={!shown}>
         <Button onClick={resetHandler}>OK</Button>
         <StyledInput>
-          <label>X</label>
+          <div>X</div>
           <input
             type='number'
             placeholder='X origin'
             value={state.originX}
             onChange={originXEmit}
           />
-          <label>Y</label>
+        </StyledInput>
+        <StyledInput>
+          <div>Y</div>
           <input
             type='number'
             placeholder='Y origin'
             value={state.originY}
             onChange={originYEmit}
           />
-          <label>Tick</label>
+        </StyledInput>
+        <StyledInput>
+          <div>Tick</div>
           <input
             type='number'
             placeholder='tick'
@@ -234,9 +238,9 @@ const StyledPanel = styled.div`
   margin-top: 0.5rem;
 `
 const StyledParams = styled.div`
-  display: ${ps => (ps.shown ? 'grid' : 'none')};
-  grid-template-columns: 80px 1fr;
-  grid-gap: 6px;
+  display: ${ps => (ps.shown ? 'flex' : 'none')};
+  flex-direction: row;
+  justify-content: flex-start;
   align-items: center;
 
   width: 100%;
@@ -244,38 +248,31 @@ const StyledParams = styled.div`
   padding: 0.5rem 0;
   margin-top: 0.5rem;
 
-  & > :nth-child(2) {
+  & > * {
     margin-left: 0.5rem;
   }
+  & > :nth-child(1) {
+    width: 80px;
+    margin-left: 0;
+  }
 `
-
 const StyledInput = styled.div`
   display: flex;
-  flex-direction: row;
-  justify-content: flex-start;
-  align-items: center;
+  flex-direction: column;
+  justify-content: flex-end;
+  align-items: flex-start;
 
-  width: 100%;
   height: 100%;
+  margin-bottom: 0.2rem;
 
-  & > * {
-    height: 28px;
-    padding: 0.2rem;
-    font-size: 0.75rem;
+  & > :nth-child(1) {
+    font-size: 0.55rem;
+    font-weight: 600;
   }
   & > :nth-child(2) {
-    max-width: 40px;
-  }
-  & > :nth-child(3) {
-    margin-left: 0.3rem;
-  }
-  & > :nth-child(4) {
-    max-width: 40px;
-  }
-  & > :nth-child(5) {
-    margin-left: 0.3rem;
-  }
-  & > :nth-child(6) {
-    max-width: 62px;
+    font-size: 0.55rem;
+    height: 24px;
+    max-width: 65px;
+    padding: 0.2rem;
   }
 `

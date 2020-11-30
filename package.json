@@ -2,10 +2,8 @@
   "name": "gameoflife",
   "version": "1.0.0",
   "scripts": {
-    "build": "webpack --mode production",
-    "build:dev": "webpack --mode development",
-    "start": "webpack serve --mode development",
-    "start:live": "webpack-dev-server --open --mode development --liveReload"
+    "start": "cross-env NODE_ENV=development webpack serve --config config/webpack.dev.js",
+    "build": "cross-env NODE_ENV=production webpack --config config/webpack.prod.js"
   },
   "license": "MIT",
   "author": {
@@ -39,12 +37,12 @@
     "webpack-merge": "^5.2.0"
   },
   "dependencies": {
-    "react": "^16.13.0",
-    "react-dom": "^16.13.0",
+    "react": "^17.0.1",
+    "react-dom": "^17.0.1",
+    "styled-components": "^5.2.1",
     "react-helmet": "^6.1.0",
     "react-responsive": "^8.1.1",
     "react-select": "^3.1.0",
-    "rxjs": "^6.5.3",
-    "styled-components": "^4.4.0"
+    "rxjs": "^6.5.3"
   }
 }

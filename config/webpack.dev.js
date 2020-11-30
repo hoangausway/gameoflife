@@ -1,41 +1,38 @@
 require('dotenv').config({
   path: `.env.${process.env.NODE_ENV}`
 })
-
 const paths = require('./paths')
 
 const webpack = require('webpack')
 const { merge } = require('webpack-merge')
 const common = require('./webpack.common.js')
 
-console.log('process.env.PUBLIC_PATH', process.env.PUBLIC_PATH)
-
-// Set the mode to development or production
-const mode = 'development'
-
-// const output = { publicPath: 'http://localhost:3004/' }
-// Where webpack outputs the assets and bundles
+// Output
 const output = {
   publicPath: process.env.PUBLIC_PATH
 }
 
-// Control how source maps are generated
-const devtool = 'inline-source-map'
+console.log('ouput', output)
 
-// Spin up a server for quick development
 const devServer = {
-  port: process.env.PORT,
+  historyApiFallback: true,
   contentBase: paths.build,
   open: true,
   compress: true,
   hot: true,
-  historyApiFallback: true
+  port: process.env.PORT
 }
 
 // Only update what has changed on hot reload
 const hotModuleReplacementPlugin = new webpack.HotModuleReplacementPlugin()
-
 const plugins = [hotModuleReplacementPlugin]
 
-// module exports
-module.exports = merge(common, { mode, output, devtool, devServer, plugins })
+module.exports = merge(common, {
+  mode: 'development',
+  output,
+  // Control how source maps are generated
+  devtool: 'inline-source-map',
+  // Spin up a server for quick development
+  devServer,
+  plugins
+})

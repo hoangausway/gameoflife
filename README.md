@@ -1,5 +1,5 @@
-# 📦 WEBPACK WITH MODULE FEDERATION
-Modified from original Tania's [webpack 5 boilerplate](https://github.com/taniarascia/webpack-boilerplate)
+# GAME OF LIFE
+Expose component GameOfLife with Module Federation Plugin from Webpack 5
 
 ## Installation
 
@@ -17,7 +17,7 @@ npm i
 npm start
 ```
 
-You can view the development server at `localhost:9001`.
+You can view the development server at `localhost:8080`.
 
 ### Production build
 
@@ -25,11 +25,29 @@ You can view the development server at `localhost:9001`.
 npm run build
 ```
 
+> Note: Install [live-server](https://www.npmjs.com/package/live-server) globally to deploy a simple server.
+
+```bash
+npm i -g live-server
+```
+
+You can view the deploy by creating a server in `dist`.
+
+```bash
+live-server ./dist
+```
+
 ## Features
 
-- [webpack](https://webpack.js.org/)
-- [Babel](https://babeljs.io/)
-- [Module Federation](https://webpack.js.org/concepts/module-federation/)
+- Babel loader
+- Webpack 5's asset types: load js, css, images, inline fonts and svg
+- Dev PORT is set in .env.development
+- generate html file from template.html
+- copy static assets from ./public
+- clean ./dist folder
+- Module Federation
+- react
+- styled-components
 
 ## Dependencies
 
@@ -44,7 +62,8 @@ npm run build
 ### Babel
 
 - [`@babel/core`](https://www.npmjs.com/package/@babel/core) - Transpile ES6+ to backwards compatible JavaScript
-- [`@babel/preset-react`](https://babeljs.io/docs/en/babel-preset-react) - React
+- [`@babel/preset-env`](https://babeljs.io/docs/en/babel-preset-env) - Smart defaults for Babel
+- [`@babel/preset-react`](https://babeljs.io/docs/en/babel-preset-react) - Smart defaults for Babel
 
 ### Loaders
 
@@ -53,13 +72,16 @@ npm run build
 - [`style-loader`](https://webpack.js.org/loaders/style-loader/) - Inject CSS into the DOM
 
 ### Plugins
-- [`ModuleFederationPlugin]
+
 - [`clean-webpack-plugin`](https://github.com/johnagan/clean-webpack-plugin) - Remove/clean build folders
 - [`copy-webpack-plugin`](https://github.com/webpack-contrib/copy-webpack-plugin) - Copy files to build directory
 - [`html-webpack-plugin`](https://github.com/jantimon/html-webpack-plugin) - Generate HTML files from template
 - [`mini-css-extract-plugin`](https://github.com/webpack-contrib/mini-css-extract-plugin) - Extract CSS into separate files
-- [`css-minimizer-webpack-plugin`](https://webpack.js.org/plugins/css-minimizer-webpack-plugin/) - Optimize and minimize CSS assets
 
 ## Author
+- Hoang Nguyen
+- Credits: [Tania Rascia](https://www.taniarascia.com)
 
-- [Hoang Nguyen](git@github.com:hoangausway/wp5-modfed)
+## License
+
+This project is open source and available under the [MIT License](LICENSE).

@@ -244,7 +244,6 @@ const StyledParams = styled.div`
   width: 100%;
   height: 100%;
   padding: 0.5rem 0;
-  margin-top: 0.5rem;
 
   & > * {
     margin-left: 0.5rem;

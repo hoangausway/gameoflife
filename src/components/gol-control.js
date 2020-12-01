@@ -234,8 +234,6 @@ const StyledPanel = styled.div`
 
   width: 100%;
   height: 100%;
-  padding: 0.5rem 0;
-  margin-top: 0.5rem;
 `
 const StyledParams = styled.div`
   display: ${ps => (ps.shown ? 'flex' : 'none')};

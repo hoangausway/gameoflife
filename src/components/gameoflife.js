@@ -8,6 +8,7 @@ const barHeight = 160
 
 const StyledWrapper = styled.div`
   padding: 0.5rem;
+  padding-top: 0;
   ${ps =>
     ps.isSmall
       ? css`

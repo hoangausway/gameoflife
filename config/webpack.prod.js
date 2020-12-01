@@ -11,7 +11,6 @@ const MiniCssExtractPlugin = require('mini-css-extract-plugin')
 const output = {
   path: paths.build,
   filename: '[name].bundle.js',
-  assetModuleFilename: 'images/[hash][ext][query]',
   publicPath: process.env.PUBLIC_PATH
 }
 console.log('ouput', output)
